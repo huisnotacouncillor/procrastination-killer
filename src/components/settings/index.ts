@@ -1,0 +1,1 @@
+export { KillerSettings } from "./setting";
