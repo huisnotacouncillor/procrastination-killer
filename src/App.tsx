@@ -125,18 +125,9 @@ export default function App() {
   // 获取会话状态文本
   const getSessionText = () => {
     if (pomodoro.state.currentSession === "focus") {
-      return "专注时间";
+      return "专注";
     } else {
-      return "休息时间";
-    }
-  };
-
-  // 获取会话状态颜色
-  const getSessionColor = () => {
-    if (pomodoro.state.currentSession === "focus") {
-      return "text-secondary-foreground";
-    } else {
-      return "text-secondary-foreground";
+      return "休息";
     }
   };
 
@@ -145,7 +136,7 @@ export default function App() {
       <div className="flex px-4 py-3 items-center justify-between">
         {/* 番茄钟状态显示 */}
         <div className="flex items-center gap-4">
-          <div className={`text-lg font-semibold ${getSessionColor()}`}>
+          <div className="text-lg font-semibold text-secondary-foreground">
             {getSessionText()}
           </div>
         </div>
@@ -171,7 +162,10 @@ export default function App() {
             !countdown.isPaused &&
             !countdown.isEnded && (
               <Button variant="outline" onClick={countdown.start} size="lg">
-                开始专注
+              {
+                pomodoro.state.currentSession === "focus" ? "开始专注" : "开始休息"
+              }
+                {/*开始专注*/}
               </Button>
             )}
           {countdown.isRunning && !countdown.isPaused && (
