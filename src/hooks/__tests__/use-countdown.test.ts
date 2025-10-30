@@ -1,8 +1,8 @@
 import { renderHook, act } from "@testing-library/react";
-import { useCountdown } from "@/hooks/use-countdown";
+import { useCountdown } from "../use-countdown";
 import { invoke } from "@tauri-apps/api/core";
 import { listen } from "@tauri-apps/api/event";
-import { vi } from "vitest";
+import { vi, describe, it, expect, beforeEach, afterEach } from "vitest";
 
 // Mock Tauri API
 vi.mock("@tauri-apps/api/core");
